@@ -7,8 +7,9 @@ import { useContext } from "react"
 import { Theme } from "./contexts/ThemeContext"
 
 function App() {
+  const {darkTheme} = useContext(Theme)
   return (
-    <div>
+    <div className={`${darkTheme ? "bg-black" : "bg-white"} w-[100vw] min-h-screen`}>
       <Routes>
         <Route element={<PageLayout />}>
           <Route path="/" element={<Home />} />
