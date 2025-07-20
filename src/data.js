@@ -1,0 +1,1 @@
+export const array = new Array(50).fill({"key": "/vite.svg"})

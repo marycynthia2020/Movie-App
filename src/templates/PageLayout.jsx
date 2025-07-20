@@ -4,8 +4,9 @@ import Footer from '../organisms/Footer'
 
 const PageLayout = () => {
   return (
-    <div className='w-full min-h-screen grid grid-rows-[auto_1fr_auto] p-5'>
+    <div className='max-w-screen min-h-screen grid grid-rows-[auto_1fr_auto] pb-4'>
         <Nav />
+        <div className='mt-48 sm:mt-32 lg:mt-20'></div>
         <Outlet />
         <Footer />
     </div>
