@@ -16,8 +16,3 @@ export const fetchSeries = () => {
   })
   return query
 }
-
-
-function navigate (movie) {
-    navigate(`movies/${movie.id}`)
-}

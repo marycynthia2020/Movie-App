@@ -3,11 +3,13 @@ import { fetchSeries } from '../utils/fetchData'
 import { Theme } from '../contexts/ThemeContext'
 import MovieCard from '../molecules/MovieCard'
 import PopularCard from '../molecules/PopularCard'
+import { navigateToTvSeries } from '../Hooks/NavigateToMovies'
 
 const TvSeries = () => {
   const {darkTheme} = useContext(Theme)
   const [seriesResults, setSeriesResults] = useState([])
   const {data, isLoading, isError, isSuccess} = fetchSeries()
+  const navigatetoseries = navigateToTvSeries()
   useEffect(()=>{
     if(isSuccess){
       setSeriesResults(data.results)
@@ -16,10 +18,10 @@ const TvSeries = () => {
 }, [data])
 
 if(isLoading){
-    return <span className='animate-pulse text-2xl text-center'>Loading...</span>
+    return <span className={`animate-pulse text-2xl text-center mt-20 ${darkTheme ? "text-white" : "text-black"}`}>Loading...</span>
   }
   if(isError){
-    return <span className='animate-pulse text-2xl text-center'>Error fetchin movies. Check your internet connection and refresh</span>
+    return <span className={`animate-pulse text-2xl text-center mt-20 ${darkTheme ? "text-white" : "text-black"}`}>Error fetching Tv series. Check your internet connection and refresh</span>
   }
 
   
@@ -30,7 +32,7 @@ if(isLoading){
         {
           seriesResults.length > 0 
           ? seriesResults.map(series => (
-            <MovieCard key={series.id} movie={series} />
+            <div key={series.id} onClick={()=> navigatetoseries(series)}><MovieCard  movie={series} /></div>
           ))
           : <div className={`text-2xl text-center ${darkTheme ? "text-white" : "text-black"} `}>No Tv series available</div>
         }
@@ -40,7 +42,7 @@ if(isLoading){
         {
           seriesResults.length > 0 
           ? seriesResults.map(series => (
-            <PopularCard key={series.id} movie={series} />
+            <div onClick={()=>navigatetoseries(series)} key={series.id}><PopularCard  movie={series} /></div>
           ))
           : <div className={`text-2xl text-center ${darkTheme ? "text-white" : "text-black"} `}>No Tv Series available</div>
         }
