@@ -1,6 +1,7 @@
 # A Movie Application for All Kinds of Movies and Tv Series 🍿
 
 **Description**
+
 This movie application offers an extensive collection of films and TV series, providing users with comprehensive details such as poster images, plot summaries, release dates, genres, ratings, and backdrops. Discover all types of movies and series here, and easily search for any title you have in mind.
 
 **Technologies Used**
