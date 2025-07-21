@@ -27,9 +27,9 @@ if(isLoading){
   }
 
   return (
-    <div className='w-full px-6 mx-auto max-w-[1600px] mt-5 lg:mt-10 flex flex-col flex-nowrap overflow-x-auto scrolling-wrapper '>
+    <div className='w-full px-6 mx-auto max-w-[1600px] mt-5 lg:mt-10 flex flex-col flex-nowrap overflow-x-auto '>
       <h2 className={`text-2xl lg:text-3xl font-bold mb-4 ${darkTheme? "text-white" : "text-black"} `}>Streaming Now</h2>
-      <div className='mb-8 gap-4 flex flex-row-reverse flex-nowrap overflow-x-auto scrolling-wrapper'>
+      <div className='mb-8 gap-4 flex  flex-row-reverse flex-nowrap overflow-x-auto scrolling-wrapper '>
         {
           seriesResults.length > 0 
           ? seriesResults.map(series => (
@@ -43,7 +43,7 @@ if(isLoading){
         {
           seriesResults.length > 0 
           ? seriesResults.map(series => (
-            <div onClick={()=>navigatetoseries(series)} key={series.id}><PopularCard  movie={series} /></div>
+            <div onClick={()=>navigatetoseries(series)} key={series.id} ><PopularCard  movie={series} /></div>
           ))
           : <div className={`text-2xl text-center ${darkTheme ? "text-white" : "text-black"} `}>No Tv Series available</div>
         }
