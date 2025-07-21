@@ -9,7 +9,7 @@ const Nav = () => {
     const {darkTheme, isSearchOpen} = useContext(Theme)
   return (
     <div className={`z-[800] px-6 w-full fixed  inset-x-0 py-6 shadow-lg ${darkTheme ? "bg-[#121212]" :"bg-[#F5F5F5]"} `}>
-        <nav className="w-full mx-auto max-w-[1920px] flex flex-col lg:flex-row lg:items-center justify-between gap-y-5 ">
+        <nav className="w-full mx-auto max-w-[1800px] flex flex-col lg:flex-row lg:items-center justify-between gap-y-5 ">
             <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 gap-y-5'>
                 <Logo />
                 {isSearchOpen && <SearchBar />}

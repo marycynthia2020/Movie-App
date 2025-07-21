@@ -27,7 +27,7 @@ if(isLoading){
   }
 
   return (
-    <div className='w-full px-6 mx-auto max-w-[1700px] mt-5 lg:mt-10 flex flex-col flex-nowrap overflow-x-auto scrolling-wrapper '>
+    <div className='w-full px-6 mx-auto max-w-[1600px] mt-5 lg:mt-10 flex flex-col flex-nowrap overflow-x-auto scrolling-wrapper '>
       <h2 className={`text-2xl lg:text-3xl font-bold mb-4 ${darkTheme? "text-white" : "text-black"} `}>Streaming Now</h2>
       <div className='mb-8 gap-4 flex flex-row-reverse flex-nowrap overflow-x-auto scrolling-wrapper'>
         {
