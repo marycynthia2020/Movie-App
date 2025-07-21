@@ -10,9 +10,11 @@ This movie application offers an extensive collection of films and TV series, pr
 * TanStack Query (formerly React Query): For data fetching, caching, and state management.
 
 **Development Insights**
+
 Building this application primarily involved compiling and applying concepts I've learned in React. It served as an excellent opportunity to flex my knowledge and implement it in a real-world project.
 
 **Future Enhancements**
+
 A key feature I plan to implement in the future is an "Add to Watchlist" button. This will allow users to easily save movies or series they wish to rewatch or come back to later.
 
 **Installation**
