@@ -3,6 +3,7 @@ import { Theme } from '../contexts/ThemeContext'
 import { useParams } from 'react-router'
 import { fetchSeries } from '../utils/fetchData'
 import SeriesDetailsCard from '../molecules/SeriesDetailsCard'
+import BackButton from '../atoms/BackButton'
 
 const SeriesDetails = () => {
     const {darkTheme} = useContext(Theme)
@@ -14,7 +15,6 @@ const SeriesDetails = () => {
                 setFoundSeries(data.results.find(series => series.name === name))
               }
           }, [data])
-          console.log(foundSeries)
 
     if(isLoading){
         return <span className={`animate-pulse text-2xl text-center mt-20 ${darkTheme ? "text-white" : "text-black"}`}>Loading...</span>
@@ -24,6 +24,7 @@ const SeriesDetails = () => {
       }
   return (
     <div className='] px-6 w-full mx-auto max-w-[1600px] mt-5 lg:mt-10 flex flex-col flex-nowrap overflow-x-auto scrolling-wrapper '>
+      <BackButton />
         <SeriesDetailsCard series={foundSeries} />
     </div>
   )

@@ -6,16 +6,18 @@ import PopularCard from '../molecules/PopularCard'
 import { navigateToMovies} from '../Hooks/NavigateToMovies'
 
 const Movies = () => {
-  const {darkTheme} = useContext(Theme)
+  const {darkTheme, searchValue} = useContext(Theme)
       const [movieResults, setMovieResults] = useState([])
       const {data, isLoading, isError, isSuccess} = fetchMovies()
       const navigatetomovies = navigateToMovies()
       useEffect(()=>{
             if(isSuccess){
               setMovieResults(data.results)
-              console.log(data.results)
             }
-        }, [data])
+            if(searchValue){
+            setMovieResults(data.results.filter(movie => movie.title.toLowerCase().startsWith(searchValue.toLowerCase())))
+      }
+        }, [data, searchValue])
       
       if(isLoading){
           return <span className={`animate-pulse text-2xl text-center mt-20 ${darkTheme ? "text-white" : "text-black"}`}>Loading...</span>

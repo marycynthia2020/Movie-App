@@ -6,14 +6,13 @@ import { navigateToMovies, navigateToTvSeries, } from '../Hooks/NavigateToMovies
 
 
 const Home = () => {
-  const {darkTheme} = useContext(Theme)
+  const {darkTheme, searchValue} = useContext(Theme)
   const [movieResults, setMovieResults] = useState([])
   const [seriesResults, setSeriesResults] = useState([])
   const {data, isLoading, isError, isSuccess} = fetchMovies()
   const seriesData = fetchSeries()
   const navigatetomovies = navigateToMovies()
   const navigatetoseries = navigateToTvSeries()
-
     useEffect(()=>{
       if(isSuccess){
         setMovieResults(data.results)
@@ -21,7 +20,11 @@ const Home = () => {
       if(seriesData.isSuccess){
         setSeriesResults(seriesData.data.results)
       }
-  }, [data, seriesData.data])
+      if(searchValue){
+        setMovieResults(data.results.filter(movie => movie.title.toLowerCase().startsWith(searchValue.toLowerCase())))
+         setSeriesResults(seriesData.data.results.filter(series => series.name.toLowerCase().startsWith(searchValue.toLowerCase())))
+      }
+  }, [data, seriesData.data, searchValue])
 
   if(isLoading){
     return <span className={`animate-pulse text-2xl text-center mt-20 ${darkTheme ? "text-white" : "text-black"}`}>Loading...</span>

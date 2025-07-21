@@ -6,13 +6,13 @@ import { useContext } from 'react'
 import  { Theme } from '../contexts/ThemeContext'
 
 const Nav = () => {
-    const {darkTheme} = useContext(Theme)
+    const {darkTheme, isSearchOpen} = useContext(Theme)
   return (
     <div className={`z-[800] px-6 w-full fixed  inset-x-0 py-6 shadow-lg ${darkTheme ? "bg-[#121212]" :"bg-[#F5F5F5]"} `}>
         <nav className="w-full mx-auto max-w-[1920px] flex flex-col lg:flex-row lg:items-center justify-between gap-y-5 ">
             <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 gap-y-5'>
                 <Logo />
-                <SearchBar />
+                {isSearchOpen && <SearchBar />}
             </div>
             <div className='flex items-center  justify-between sm:gap-6 sm:justify-center '>
                 <Tabs path="/" children={'Home'} />

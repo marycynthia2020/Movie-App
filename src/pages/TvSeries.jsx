@@ -6,16 +6,18 @@ import PopularCard from '../molecules/PopularCard'
 import { navigateToTvSeries } from '../Hooks/NavigateToMovies'
 
 const TvSeries = () => {
-  const {darkTheme} = useContext(Theme)
+  const {darkTheme, searchValue} = useContext(Theme)
   const [seriesResults, setSeriesResults] = useState([])
   const {data, isLoading, isError, isSuccess} = fetchSeries()
   const navigatetoseries = navigateToTvSeries()
   useEffect(()=>{
     if(isSuccess){
       setSeriesResults(data.results)
-      console.log(data.results)
     }
-}, [data])
+    if(searchValue){
+        setSeriesResults(data.results.filter(series => series.name.toLowerCase().startsWith(searchValue.toLowerCase())))
+      }
+}, [data, searchValue])
 
 if(isLoading){
     return <span className={`animate-pulse text-2xl text-center mt-20 ${darkTheme ? "text-white" : "text-black"}`}>Loading...</span>
@@ -24,7 +26,6 @@ if(isLoading){
     return <span className={`animate-pulse text-2xl text-center mt-20 ${darkTheme ? "text-white" : "text-black"}`}>Error fetching Tv series. Check your internet connection and refresh</span>
   }
 
-  
   return (
     <div className='w-full px-6 mx-auto max-w-[1700px] mt-5 lg:mt-10 flex flex-col flex-nowrap overflow-x-auto scrolling-wrapper '>
       <h2 className={`text-2xl lg:text-3xl font-bold mb-4 ${darkTheme? "text-white" : "text-black"} `}>Streaming Now</h2>
